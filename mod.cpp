@@ -1,0 +1,12 @@
+name = "Synixe Mod";
+picture = "logo_sgc_stats_ca.paa";
+actionName = "GitHub";
+action = "https://github.com/synixe/synixe";
+description = "Synixe Mod";
+//logo = "logo_sgc_stats_ca.paa";
+//logoOver = "logo_sgc_stats_ca.paa";
+tooltip = "Synixe Mod";
+tooltipOwned = "Synixe Mod";
+overview = "Synixe Mod";
+author = "Brett from Synixe";
+//overviewPicture = "logo_ace3_ca.paa";
