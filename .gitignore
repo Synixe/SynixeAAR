@@ -6,3 +6,6 @@ texHeaders.bin
 *.swo
 *.biprivatekey
 Thumbs.db
+target/
+secrets.rs
+*.lock

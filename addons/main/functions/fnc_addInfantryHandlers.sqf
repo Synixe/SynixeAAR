@@ -31,5 +31,5 @@ if !(_isSetup) then {
     _unit addEventHandler ["Fired", FUNC(onUnitFired)];
   };
   _unit addMPEventHandler ["MPHit",       FUNC(onUnitHit)];
-  _unit addMPEventHandler ["MPKilled",    FUNC(onUnitKilled)];
+  //_unit addMPEventHandler ["MPKilled",    FUNC(onUnitKilled)];
 }

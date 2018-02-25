@@ -15,20 +15,21 @@
 #include "script_component.hpp"
 
 params [
-  ["_unit",       objNull],
-  ["_killer",     objNull],
-  ["_instigator", objNull],
-  ["_useEffects", false]
+  ["_victim",     objNull],
+  ["_killer",     objNull]
 ];
+
+if (_victim == objNull) exitWith {};
+if !(getObjectType _victim isEqualTo 8) exitWith {};
 
 private _vname = "";
 
-if (isPlayer _unit) then {
-  _vname = getPlayerUID _unit;
+if (isPlayer _victim) then {
+  _vname = getPlayerUID _victim;
 } else {
-  _vname = netId _unit;
+  _vname = netId _victim;
 };
 
-_iname = _unit getVariable ["sgc_last_damage", _vname];
+_iname = _victim getVariable ["sgc_last_damage", _vname];
 
 call compile ("synixe" callExtension (format ["`deaths` (`id`,`v`,`k`,`i`) VALUES (NULL,'%1','%2','%3');", _vname, _killer, _iname]));
