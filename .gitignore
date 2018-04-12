@@ -9,3 +9,5 @@ Thumbs.db
 target/
 secrets.rs
 *.lock
+extras/
+tools/

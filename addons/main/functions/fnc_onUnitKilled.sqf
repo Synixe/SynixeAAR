@@ -32,4 +32,4 @@ if (isPlayer _victim) then {
 
 _iname = _victim getVariable ["sgc_last_damage", _vname];
 
-call compile ("synixe" callExtension (format ["`deaths` (`id`,`v`,`k`,`i`) VALUES (NULL,'%1','%2','%3');", _vname, _killer, _iname]));
+call compile ("aar" callExtension (format ["`deaths` (`id`,`v`,`k`,`i`) VALUES (NULL,'%1','%2','%3');", _vname, _killer, _iname]));

@@ -15,7 +15,7 @@
   No
 */
 
-#include "script_component.hpp";
+#include "script_component.hpp"
 
 params [
   ["_unit", objNull]

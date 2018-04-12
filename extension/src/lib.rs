@@ -29,7 +29,8 @@ pub unsafe extern "C" fn RVExtension(output: *mut c_char, output_size: usize, fu
 #[no_mangle]
 pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize, function: *mut c_char, args: &[*mut c_char], arg_count: usize) {
     let size = output_size - 1;
-    if *function == *get_c("init-replay") {
+    let r_function = CStr::from_ptr(function).to_str().unwrap();
+    if r_function == "init-replay" {
         let pool = get_pool();
         match pool {
             Ok(conn) => {

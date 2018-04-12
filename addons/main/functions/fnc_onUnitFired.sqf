@@ -39,4 +39,4 @@ if (isPlayer _unit) then {
   _name = getPlayerUID _unit;
 };
 
-call compile ("synixe" callExtension (format ["`shots` (`id`,`p`,`w`,`a`) VALUES (NULL,'%1','%2','%3');", _name, _weapon, _ammo]));
+call compile ("aar" callExtension (format ["`shots` (`id`,`p`,`w`,`a`) VALUES (NULL,'%1','%2','%3');", _name, _weapon, _ammo]));
