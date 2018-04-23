@@ -73,7 +73,7 @@ pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize
     let size = output_size - 1;
     let r_function = CStr::from_ptr(function).to_str().unwrap();
     if r_function == "init-replay" {
-        let mut stmt = conn.pool.prepare("INSERT INTO `replays`(`id``, `mission`, `map`) VALUES (NULL, :mission, :map)").unwrap();
+        let mut stmt = conn.pool.prepare("INSERT INTO `synixe_aar`.`replays` (`id`, `mission`, `map`) VALUES (NULL, :mission, :map)").unwrap();
         match stmt.execute(params!{
             "mission" => CStr::from_ptr(args[0]).to_str().unwrap(),
             "map" => CStr::from_ptr(args[1]).to_str().unwrap()

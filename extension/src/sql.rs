@@ -40,7 +40,7 @@ impl SQL {
                 `mission` varchar(64) NOT NULL,
                 `p` varchar(32) NOT NULL,
                 `w` varchar(32) NOT NULL,
-                `a` varchar(32) NOT NULL
+                `a` varchar(32) NOT NULL,
                 PRIMARY KEY (`id`)
             ) DEFAULT CHARSET=latin1;", ()
         ) {
@@ -60,7 +60,7 @@ impl SQL {
                 `p` varchar(32) NOT NULL,
                 `c` varchar(32) NOT NULL,
                 `d` varchar(32) NOT NULL,
-                `i` varchar(32) NOT NULL
+                `i` varchar(32) NOT NULL,
                 PRIMARY KEY (`id`)
             ) DEFAULT CHARSET=latin1;", ()
         ) {
@@ -79,7 +79,7 @@ impl SQL {
                 `mission` varchar(64) NOT NULL,
                 `v` varchar(32) NOT NULL,
                 `k` varchar(32) NOT NULL,
-                `i` varchar(32) NOT NULL
+                `i` varchar(32) NOT NULL,
                 PRIMARY KEY (`id`)
             ) DEFAULT CHARSET=latin1;", ()
         ) {
@@ -110,7 +110,7 @@ impl SQL {
 }
 
 fn get_pool() -> mysql::Result<mysql::Pool> {
-    let host = format!("mysql://{}:{}@{}:3307",
+    let host = format!("mysql://{}:{}@{}:3306",
         secrets::MySQL::USERNAME,
         secrets::MySQL::PASSWORD,
         secrets::MySQL::HOST);
