@@ -39,4 +39,4 @@ if (isPlayer _unit) then {
   _name = getPlayerUID _unit;
 };
 
-call compile ("aar" callExtension (format ["`shots` (`id`,`p`,`w`,`a`) VALUES (NULL,'%1','%2','%3');", _name, _weapon, _ammo]));
+"sgc_stats" callExtension ["insert",[format ["INSERT INTO `shots` (`id`,`mission`,`p`,`w`,`a`) VALUES (NULL, :mission, '%1','%2','%3');", _name, _weapon, _ammo]]];

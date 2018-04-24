@@ -1,12 +1,16 @@
 [package]
-name = "synixe_stats"
+name = "sgc_stats"
 version = "0.1.0"
 authors = ["Brett <brett@bmandesigns.com>"]
 
 [lib]
-name = "synixe_stats"
+name = "sgc_stats"
 crate-type = ["cdylib"]
 
 [dependencies]
 mysql = "*"
 libc = "*"
+lazy_static = "1.0.0"
+fern = "0.5.5"
+chrono = "0.4"
+log = "0.4"

@@ -25,11 +25,10 @@ private _isSetup = _unit getVariable ["sgc_stats_setup", false];
 
 if !(_isSetup) then {
   _unit setVariable ["sgc_stats_setup", true];
-  _unit addMPEventHandler ["MPRespawn", FUNC(onUnitRespawn)];
+  //_unit addMPEventHandler ["MPRespawn", FUNC(onUnitRespawn)];
   if (isPlayer _unit) then {
-    //For the AAR we will want to track ai fired shots, but right now we don't need to.
     _unit addEventHandler ["Fired", FUNC(onUnitFired)];
   };
   _unit addMPEventHandler ["MPHit",       FUNC(onUnitHit)];
-  //_unit addMPEventHandler ["MPKilled",    FUNC(onUnitKilled)];
+  _unit addMPEventHandler ["MPKilled",    FUNC(onUnitKilled)];
 }

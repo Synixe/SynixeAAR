@@ -30,6 +30,6 @@ if (isPlayer _victim) then {
   _vname = netId _victim;
 };
 
-_iname = _victim getVariable ["sgc_last_damage", _vname];
+private _iname = _victim getVariable ["sgc_last_damage", _vname];
 
-call compile ("aar" callExtension (format ["`deaths` (`id`,`v`,`k`,`i`) VALUES (NULL,'%1','%2','%3');", _vname, _killer, _iname]));
+"sgc_stats" callExtension ["insert",[format ["INSERT INTO `deaths` (`id`,`mission``v`,`k`,`i`) VALUES (NULL,:mission,'%1','%2','%3');", _vname, _killer, _iname]]];
