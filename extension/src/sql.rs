@@ -7,9 +7,6 @@ use mysql;
 
 pub struct SQL {
     pub pool: mysql::Pool,
-    pub stmt_fired: mysql::Stmt,
-    pub stmt_hit: mysql::Stmt,
-    pub stmt_killed: mysql::Stmt,
     pub status: i32
 }
 
@@ -98,15 +95,8 @@ impl SQL {
             status = 1;
         }
 
-        let mut stmt_fired = pool.prepare("INSERT INTO `synixe_aar`.`shots` (`id`,`mission`,`p`,`w`,`a`) VALUES (NULL, :mission, :name, :weapon, :ammo);");
-        let mut stmt_hit = pool.prepare("INSERT INTO `synixe_aar`.`hits` (`id`,`mission`,`p`,`c`,`d`,`i`) VALUES (NULL, :mission, :name, :cause, :damage, :ammo);");
-        let mut stmt_killed = pool.prepare("INSERT INTO `synixe_aar`.`deaths` (`id`,`mission``v`,`k`,`i`) VALUES (NULL, :mission, :victim, :killer, :last);")
-
         SQL {
             pool: pool,
-            stmt_fired: stmt_fired,
-            stmt_hit: stmt_hit,
-            stmt_killed: stmt_killed,
             status: status
         }
     }
@@ -119,7 +109,8 @@ impl SQL {
     }
 
     pub fn fired(&self, replay: u64, name: &str, weapon: &str, ammo: &str) {
-        self.stmt_fired.execute(params!{
+        let mut stmt_fired = pool.prepare("INSERT INTO `synixe_aar`.`shots` (`id`,`mission`,`p`,`w`,`a`) VALUES (NULL, :mission, :name, :weapon, :ammo);");
+        stmt_fired.execute(params!{
             mission => replay,
             name => name,
             weapon => weapon,
@@ -128,7 +119,8 @@ impl SQL {
     }
 
     pub fn hit(&self, replay: u64, name: &str, cause: &str, damage: &str, ammo: &str) {
-        self.stmt_hit.execute(params!{
+        let mut stmt_hit = pool.prepare("INSERT INTO `synixe_aar`.`hits` (`id`,`mission`,`p`,`c`,`d`,`i`) VALUES (NULL, :mission, :name, :cause, :damage, :ammo);");
+        stmt_hit.execute(params!{
             mission => replay,
             name => name,
             cause => cause,
@@ -138,7 +130,8 @@ impl SQL {
     }
 
     pub fn killed(&self, replay: u64, victim: &str, killer: &str, last: &str) {
-        self.stmt_killed.execute(params!{
+        let mut stmt_killed = pool.prepare("INSERT INTO `synixe_aar`.`deaths` (`id`,`mission``v`,`k`,`i`) VALUES (NULL, :mission, :victim, :killer, :last);");
+        stmt_killed.execute(params!{
             mission => replay,
             victim => victim,
             killer => killer,
