@@ -32,4 +32,4 @@ if (isPlayer _victim) then {
 
 private _iname = _victim getVariable ["sgc_last_damage", _vname];
 
-"sgc_stats" callExtension ["insert",[format ["INSERT INTO `deaths` (`id`,`mission``v`,`k`,`i`) VALUES (NULL,:mission,'%1','%2','%3');", _vname, _killer, _iname]]];
+"sgc_stats" callExtension ["killed",[_vname, _killer, _iname]];

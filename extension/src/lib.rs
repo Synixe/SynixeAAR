@@ -88,7 +88,27 @@ pub unsafe extern "C" fn RVExtensionArgs(output: *mut c_char, output_size: usize
                 strncpy(output, out, size);
             }
         };
-    } else if (r_function == "insert") {
-        conn.insert(CStr::from_ptr(args[0]).to_str().unwrap(), replay_id);
+    } else if (r_function == "fired") {
+        conn.fired(
+            replay_id,
+            CStr::from_ptr(args[0]).to_str().unwrap(),
+            CStr::from_ptr(args[1]).to_str().unwrap(),
+            CStr::from_ptr(args[2]).to_str().unwrap()
+        );
+    } else if (r_function == "hit") {
+        conn.hit(
+            replay_id,
+            CStr::from_ptr(args[0]).to_str().unwrap(),
+            CStr::from_ptr(args[1]).to_str().unwrap(),
+            CStr::from_ptr(args[2]).to_str().unwrap(),
+            CStr::from_ptr(args[3]).to_str().unwrap()
+        );
+    } else if (r_function == "killed") {
+        conn.killed(
+            replay_id,
+            CStr::from_ptr(args[0]).to_str().unwrap(),
+            CStr::from_ptr(args[1]).to_str().unwrap(),
+            CStr::from_ptr(args[2]).to_str().unwrap()
+        );
     }
 }

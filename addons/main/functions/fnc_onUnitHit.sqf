@@ -39,4 +39,4 @@ _unit setVariable ["sgc_last_damage", _iname];
 
 hint format ["%1 %2 %3 %4", _vname, _cause, _damage, _iname];
 
-"sgc_stats" callExtension ["insert",[format ["INSERT INTO `hits` (`id`,`mission`,`p`,`c`,`d`,`i`) VALUES (NULL,:mission,'%1','%2','%3','%4');", _vname, _cause, _damage, _iname]]];
+"sgc_stats" callExtension ["hit",[_vname, _cause, _damage, _iname]];
